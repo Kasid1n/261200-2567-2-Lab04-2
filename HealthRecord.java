@@ -2,7 +2,7 @@ public class HealthRecord {
     private int height;
     private static final int MIN_PERMITTED_HEIGHT = 50;
     private static final int MAX_PERMITTED_HEIGHT = 175;
-    private static final int DEFAULT_HEIGHT = 100;
+    private static final int DEFAULT_HEIGHT = 0;
     private static int tallestHeight =50;
     private static int shortestHeight =175;
     private static int counter =0;
@@ -10,8 +10,6 @@ public class HealthRecord {
 
     public HealthRecord(int height){
         setHeight(height);
-        averageHeight = ((averageHeight*counter) + height) / (counter+1);
-        counter++;
     }
 
 
@@ -28,6 +26,9 @@ public class HealthRecord {
             tallestHeight = this.height;
         if(this.height < shortestHeight )
             shortestHeight = this.height;
+
+        averageHeight = ((averageHeight*counter) + this.height) / (counter+1);
+        counter++;
 
     }
 
